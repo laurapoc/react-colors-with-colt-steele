@@ -3,18 +3,19 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
   root: {
-    backgoundColor: "white",
+    backgroundColor: "white",
     border: "1px solid black",
     borderRadius: "5px",
     padding: "0.5rem",
     position: "relative",
     overflow: "hidden",
+    color: "white",
     "& hover": {
       cursor: "pointer",
     },
   },
   colors: {
-    backgroundcolor: "grey",
+    backgroundColor: "grey",
   },
   title: {
     display: "flex",
