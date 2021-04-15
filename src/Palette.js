@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import "./Palette.css";
+import PaletteFooter from "./PaletteFooter";
 
 export default class Palette extends Component {
   constructor(props) {
@@ -36,20 +37,13 @@ export default class Palette extends Component {
         paletteId={id}
         moreUrl={`/palette/${id}/${color.id}`}
         showLink={true}
-      />  
+      />
     ));
     return (
       <div className="Palette">
-        <Navbar
-          level={level}
-          changeLevel={this.changeLevel}
-          handleChange={this.changeFormat}
-        />
+        <Navbar level={level} changeLevel={this.changeLevel} handleChange={this.changeFormat} showingAllColors />
         <div className="Palette-colors">{colorBoxes}</div>
-        <footer className="Palette-footer">
-          {paletteName}
-          <span className="emoji">{emoji}</span>
-        </footer>
+        <PaletteFooter paletteName={paletteName} emoji={emoji} />
       </div>
     );
   }
