@@ -89,6 +89,7 @@ class NewPaletteForm extends Component {
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSumbit = this.handleSumbit.bind(this);
   }
 
   componentDidMount() {
@@ -121,6 +122,18 @@ class NewPaletteForm extends Component {
   handleChange(evt) {
     this.setState({ newName: evt.target.value });
   }
+
+  handleSumbit() {
+    let newName = "New test Palette";
+    const newPalette = {
+      paletteName: newName,
+      id: newName.toLowerCase().replace(/ /g, "-"),
+      colors: this.state.colors,
+    };
+    this.props.savePalette(newPalette);
+    this.props.history.push("/");
+  }
+
   render() {
     const { classes } = this.props;
     const { open } = this.state;
@@ -130,6 +143,7 @@ class NewPaletteForm extends Component {
         <CssBaseline />
         <AppBar
           position="fixed"
+          color="default"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}
@@ -146,6 +160,9 @@ class NewPaletteForm extends Component {
             <Typography variant="h6" color="inherit" noWrap>
               Persistent drawer
             </Typography>
+            <Button variant="contained" color="primary" onClick={this.handleSumbit}>
+              Save Palette
+            </Button>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -177,8 +194,8 @@ class NewPaletteForm extends Component {
             <TextValidator
               value={this.state.newName}
               onChange={this.handleChange}
-              validators={["required" ,"isColorNameUnique", "isColorUnique"]}
-              errorMessages={["Enter a color name" ,"Color name must be unique", "Color already used!"]}
+              validators={["required", "isColorNameUnique", "isColorUnique"]}
+              errorMessages={["Enter a color name", "Color name must be unique", "Color already used!"]}
             />
             <Button
               variant="contained"

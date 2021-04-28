@@ -2,6 +2,7 @@
 export default {
   root: {
     backgroundColor: "blue",
+    overflow: "scroll", // my aption to hide white background at the bottom of the screen
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
