@@ -3,6 +3,15 @@ import bg from "./bg.svg";
 
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
+  "@global": {
+    ".fade-exit": {
+      opacity: "1",
+    },
+    ".fade-exit-active": {
+      opacity: "0",
+      transition: "opacity 500ms ease-out",
+    },
+  },
   root: {
     overflow: "scroll",
     height: "100vh",
