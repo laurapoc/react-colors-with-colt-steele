@@ -13,7 +13,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import Button from "@material-ui/core/Button";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+
 import PaletteMetaForm from "./PaletteMetaForm";
 
 const drawerWidth = 400;
@@ -65,6 +65,7 @@ class PaletteFormNav extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.showForm = this.showForm.bind(this);
+    this.hideForm = this.hideForm.bind(this);
   }
 
   handleChange(evt) {
@@ -77,9 +78,12 @@ class PaletteFormNav extends Component {
     this.setState({ formShowing: true });
   }
 
+  hideForm() {
+    this.setState({formShowing: false});
+  }
+
   render() {
     const { classes, open, palettes, handleSumbit } = this.props;
-    const { newPaletteName } = this.state;
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -114,7 +118,9 @@ class PaletteFormNav extends Component {
             </Button>
           </div>
         </AppBar>
-        {this.state.formShowing && <PaletteMetaForm palettes={palettes} handleSumbit={handleSumbit} />}
+        {this.state.formShowing && (
+          <PaletteMetaForm palettes={palettes} handleSumbit={handleSumbit} hideForm={this.hideForm} />
+        )}
       </div>
     );
   }
