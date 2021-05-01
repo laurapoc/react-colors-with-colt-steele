@@ -42,6 +42,7 @@ class PaletteMetaForm extends Component {
     console.log(emoji.native);
     const newPalette = { paletteName: this.state.newPaletteName, emoji: emoji.native };
     this.props.handleSumbit(newPalette);
+    this.setState({ stage: "" });
   }
 
   handleClickOpen = () => {
