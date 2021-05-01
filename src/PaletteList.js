@@ -63,7 +63,6 @@ class PaletteList extends Component {
                   {...palette}
                   goToPalette={this.goToPalette}
                   key={palette.id}
-                  // handleDelete={deletePalette}
                   openDialog={this.openDialog}
                   id={palette.id}
                 />
