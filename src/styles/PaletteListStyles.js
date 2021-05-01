@@ -1,14 +1,20 @@
 import sizes from "./sizes";
+import bg from "./bg.svg";
 
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
   root: {
-    backgroundColor: "blue",
-    overflow: "scroll", // my aption to hide white background at the bottom of the screen
+    overflow: "scroll",
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
+    /* background by SVGBackgrounds.com */
+    backgroundColor: "#4f36aa",
+    backgroundImage: `url(${bg})`,
+  },
+  heading: {
+    fontSize: "1.8rem",
   },
   container: {
     width: "50%",
@@ -44,7 +50,7 @@ export default {
     },
     [sizes.down("xs")]: {
       gridTemplateColumns: "repeat(1, 100%)",
-      gridGap: "1rem",
+      gridGap: "1.4rem",
     },
   },
 };
