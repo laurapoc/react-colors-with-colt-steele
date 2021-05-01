@@ -1,5 +1,6 @@
 import chroma from "chroma-js";
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
+import sizes from "./sizes";
 export default {
   colorBox: {
     width: "20%",
@@ -12,19 +13,28 @@ export default {
     "&:hover button": {
       opacity: "1",
     },
+    [sizes.down("lg")]: {
+      width: "25%",
+      height: (props) => (props.showingFullPalette ? "20%" : "10%"),
+    },
+    [sizes.down("md")]: {
+      width: "50%",
+      height: (props) => (props.showingFullPalette ? "10%" : "10%"),
+    },
+    [sizes.down("xs")]: {
+      width: "100%",
+      height: (props) => (props.showingFullPalette ? "5%" : "10%"),
+    },
   },
 
   copyText: {
-    color: (props) =>
-      chroma(props.background).luminance() >= 0.5 ? "black" : "white",
+    color: (props) => (chroma(props.background).luminance() >= 0.5 ? "black" : "white"),
   },
   colorName: {
-    color: (props) =>
-      chroma(props.background).luminance() <= 0.08 ? "white" : "black",
+    color: (props) => (chroma(props.background).luminance() <= 0.08 ? "white" : "black"),
   },
   seeMore: {
-    color: (props) =>
-      chroma(props.background).luminance() >= 0.5 ? "rgba(0,0,0,0.6)" : "white",
+    color: (props) => (chroma(props.background).luminance() >= 0.5 ? "rgba(0,0,0,0.6)" : "white"),
     background: "rgba(255, 255, 255, 0.3)",
     position: "absolute",
     border: "none",
@@ -37,8 +47,7 @@ export default {
     textTransform: "uppercase",
   },
   copyButton: {
-    color: (props) =>
-      chroma(props.background).luminance() >= 0.5 ? "rgba(0,0,0,0.6)" : "white",
+    color: (props) => (chroma(props.background).luminance() >= 0.5 ? "rgba(0,0,0,0.6)" : "white"),
     width: "100px",
     height: "30px",
     position: "absolute",
