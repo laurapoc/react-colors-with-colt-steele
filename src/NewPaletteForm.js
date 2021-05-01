@@ -14,6 +14,7 @@ import DraggableColorLIst from "./DraggableColorLIst";
 import { arrayMove } from "react-sortable-hoc";
 import ColorPickerForm from "./ColorPickerForm";
 import styles from "./styles/NewPaletteFormStyles";
+import seedColors from "./seedColors";
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -24,7 +25,8 @@ class NewPaletteForm extends Component {
 
     this.state = {
       open: true,
-      colors: this.props.palettes[0].colors,
+      colors: seedColors[0].colors,
+      // colors: this.props.palettes[0].colors,
     };
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -77,7 +79,8 @@ class NewPaletteForm extends Component {
 
   addRandomColor() {
     // pick random color from existing palettes
-    const allColors = this.props.palettes.map((p) => p.colors).flat();
+    // const allColors = this.props.palettes.map((p) => p.colors).flat();
+    const allColors = seedColors.map((p) => p.colors).flat();
     let rand = Math.floor(Math.random() * allColors.length);
     const randomColor = allColors[rand];
     this.setState({ colors: [...this.state.colors, randomColor] });
